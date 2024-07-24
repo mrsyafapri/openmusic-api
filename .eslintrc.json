@@ -14,6 +14,7 @@
         "no-console": "off",
         "linebreak-style": "off",
         "quotes": "off",
+        "consistent-return": "off",
         "no-unused-vars": "off",
         "no-underscore-dangle": "off",
         "camelcase": "off"
