@@ -37,7 +37,7 @@ const collaborations = require('./api/collaborations');
 const CollaborationsService = require('./services/postgres/CollaborationsService');
 const CollaborationsValidator = require('./validator/collaborations');
 
-// Exports
+// exports
 const _exports = require('./api/exports');
 const ProducerService = require('./services/rabbitmq/ProducerService');
 const ExportsValidator = require('./validator/exports');
@@ -46,14 +46,14 @@ const ExportsValidator = require('./validator/exports');
 const StorageService = require('./services/storage/StorageService');
 
 // cache
-const CacheService = require('./services/memcached/CacheService');
+const CacheService = require('./services/redis/CacheService');
 
 const ClientError = require('./exceptions/ClientError');
 const config = require('./utils/config');
 
 const init = async () => {
-  const collaborationsService = new CollaborationsService();
   const cacheService = new CacheService();
+  const collaborationsService = new CollaborationsService(cacheService);
   const playlistsService = new PlaylistsService(collaborationsService);
   const albumsService = new AlbumsService(cacheService);
   const songsService = new SongsService();

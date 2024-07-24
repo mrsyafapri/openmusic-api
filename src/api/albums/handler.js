@@ -16,35 +16,35 @@ class AlbumsHandler {
 
     const albumId = await this._albumsService.addAlbum({ name, year });
 
-    const response = h.response({
+    return h.response({
       status: 'success',
       message: 'Album berhasil ditambahkan',
       data: {
         albumId,
       },
-    });
-    response.code(201);
-    return response;
+    }).code(201);
   }
 
   async getAlbumsHandler() {
-    const albums = await this._albumsService.getAlbums();
+    const { albums, source } = await this._albumsService.getAlbums();
     return {
       status: 'success',
       data: {
         albums,
       },
+      source,
     };
   }
 
   async getAlbumByIdHandler(request, h) {
     const { id } = request.params;
-    const album = await this._albumsService.getAlbumById(id);
+    const { album, source } = await this._albumsService.getAlbumById(id);
     return {
       status: 'success',
       data: {
         album,
       },
+      source,
     };
   }
 
@@ -81,12 +81,10 @@ class AlbumsHandler {
 
     await this._albumsService.updateAlbumCoverUrl(albumId, coverUrl);
 
-    const response = h.response({
+    return h.response({
       status: 'success',
       message: 'Sampul berhasil diunggah',
-    });
-    response.code(201);
-    return response;
+    }).code(201);
   }
 
   async postLikeAlbumHandler(request, h) {
@@ -95,12 +93,10 @@ class AlbumsHandler {
 
     await this._albumsService.likeAlbum(userId, albumId);
 
-    const response = h.response({
+    return h.response({
       status: 'success',
       message: 'Berhasil menyukai album',
-    });
-    response.code(201);
-    return response;
+    }).code(201);
   }
 
   async deleteLikeAlbumHandler(request, h) {
@@ -109,30 +105,23 @@ class AlbumsHandler {
 
     await this._albumsService.unlikeAlbum(userId, albumId);
 
-    const response = h.response({
+    return h.response({
       status: 'success',
       message: 'Berhasil batal menyukai album',
-    });
-    response.code(200);
-    return response;
+    }).code(200);
   }
 
   async getAlbumLikeCountHandler(request, h) {
     const { id: albumId } = request.params;
 
-    const { count, dataSource } = await this._albumsService.getAlbumLikeCount(
-      albumId,
-    );
+    const { count, source } = await this._albumsService.getAlbumLikeCount(albumId);
 
-    const response = h.response({
+    return h.response({
       status: 'success',
       data: {
         likes: count,
       },
-    });
-    response.header('X-Data-Source', dataSource);
-    response.code(200);
-    return response;
+    }).header('X-Data-Source', source).code(200);
   }
 }
 

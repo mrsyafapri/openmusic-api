@@ -11,8 +11,8 @@ const config = {
   rabbitMq: {
     server: process.env.RABBITMQ_SERVER,
   },
-  memcached: {
-    host: process.env.MEMCACHED_SERVER,
+  redis: {
+    host: process.env.REDIS_SERVER,
   },
 };
 

@@ -6,7 +6,7 @@
 - [npm](https://www.npmjs.com/) (comes with Node.js)
 - [PostgreSQL](https://www.postgresql.org/) (v12 or higher recommended)
 - [RabbitMQ](https://www.rabbitmq.com/)
-- [Memcached](https://memcached.org/)
+- [Redis](https://redis.io/)
 
 ## Installation
 
@@ -44,8 +44,6 @@
    npm run migrate up
    ```
 
-````
-
 ## Running the Application
 
 1. Start the application:
@@ -80,7 +78,6 @@ ACCESS_TOKEN_AGE=your_access_token_age
 # Message broker
 RABBITMQ_SERVER=your_rabbitmq_server
 
-# Memcached
-MEMCACHED_SERVER=your_memcached_server
+# Redis
+REDIS_SERVER=your_redis_server
 ```
-````
