@@ -37,7 +37,7 @@ class AlbumsService {
       const cachedAlbums = await this._cacheService.get(cacheKey);
       return {
         albums: JSON.parse(cachedAlbums),
-        source: 'cache'
+        source: 'cache',
       };
     } catch (error) {
       const result = await this._pool.query('SELECT * FROM albums');
@@ -48,7 +48,7 @@ class AlbumsService {
 
       return {
         albums,
-        source: 'database'
+        source: 'database',
       };
     }
   }
@@ -60,7 +60,7 @@ class AlbumsService {
       const cachedAlbum = await this._cacheService.get(cacheKey);
       return {
         album: JSON.parse(cachedAlbum),
-        source: 'cache'
+        source: 'cache',
       };
     } catch (error) {
       const albumQuery = {
@@ -88,7 +88,7 @@ class AlbumsService {
 
       return {
         album,
-        source: 'database'
+        source: 'database',
       };
     }
   }
@@ -189,12 +189,12 @@ class AlbumsService {
       const cachedLikes = await this._cacheService.get(cacheKey);
       return {
         count: parseInt(cachedLikes, 10),
-        source: 'cache'
+        source: 'cache',
       };
     } catch (error) {
       const result = await this._pool.query(
         'SELECT COUNT(*) AS count FROM user_album_likes WHERE album_id = $1',
-        [albumId]
+        [albumId],
       );
 
       const count = parseInt(result.rows[0].count, 10);
@@ -204,7 +204,7 @@ class AlbumsService {
 
       return {
         count,
-        source: 'database'
+        source: 'database',
       };
     }
   }
