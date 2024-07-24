@@ -1,4 +1,4 @@
-const Joi = require("joi");
+const Joi = require('joi');
 
 const CollaborationPayloadSchema = Joi.object({
   playlistId: Joi.string().required(),

@@ -1,9 +1,9 @@
-const Memcached = require("memcached");
-const config = require("../../utils/config");
+const Memcached = require('memcached');
+const config = require('../../utils/config');
 
 class CacheService {
   constructor() {
-    this._client = new Memcached(config.memcached.host || "localhost:11211");
+    this._client = new Memcached(config.memcached.host || 'localhost:11211');
   }
 
   async set(key, value, expirationInSeconds = 1800) {

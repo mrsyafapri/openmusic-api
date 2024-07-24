@@ -1,4 +1,4 @@
-const autoBind = require("auto-bind");
+const autoBind = require('auto-bind');
 
 class SongsHandler {
   constructor(service, validator) {
@@ -24,8 +24,8 @@ class SongsHandler {
     });
 
     const response = h.response({
-      status: "success",
-      message: "Lagu berhasil ditambahkan",
+      status: 'success',
+      message: 'Lagu berhasil ditambahkan',
       data: {
         songId,
       },
@@ -38,7 +38,7 @@ class SongsHandler {
     const { title, performer } = request.query;
     const songs = await this._service.getSongs({ title, performer });
     return {
-      status: "success",
+      status: 'success',
       data: {
         songs,
       },
@@ -49,7 +49,7 @@ class SongsHandler {
     const { id } = request.params;
     const song = await this._service.getSongById(id);
     return {
-      status: "success",
+      status: 'success',
       data: {
         song,
       },
@@ -63,8 +63,8 @@ class SongsHandler {
     await this._service.editSongById(id, request.payload);
 
     return {
-      status: "success",
-      message: "Lagu berhasil diperbarui",
+      status: 'success',
+      message: 'Lagu berhasil diperbarui',
     };
   }
 
@@ -73,8 +73,8 @@ class SongsHandler {
     await this._service.deleteSongById(id);
 
     return {
-      status: "success",
-      message: "Lagu berhasil dihapus",
+      status: 'success',
+      message: 'Lagu berhasil dihapus',
     };
   }
 }

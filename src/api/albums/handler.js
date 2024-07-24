@@ -1,5 +1,5 @@
-const autoBind = require("auto-bind");
-const config = require("../../utils/config");
+const autoBind = require('auto-bind');
+const config = require('../../utils/config');
 
 class AlbumsHandler {
   constructor(albumsService, storageService, validator) {
@@ -17,8 +17,8 @@ class AlbumsHandler {
     const albumId = await this._albumsService.addAlbum({ name, year });
 
     const response = h.response({
-      status: "success",
-      message: "Album berhasil ditambahkan",
+      status: 'success',
+      message: 'Album berhasil ditambahkan',
       data: {
         albumId,
       },
@@ -30,7 +30,7 @@ class AlbumsHandler {
   async getAlbumsHandler() {
     const albums = await this._albumsService.getAlbums();
     return {
-      status: "success",
+      status: 'success',
       data: {
         albums,
       },
@@ -41,7 +41,7 @@ class AlbumsHandler {
     const { id } = request.params;
     const album = await this._albumsService.getAlbumById(id);
     return {
-      status: "success",
+      status: 'success',
       data: {
         album,
       },
@@ -55,8 +55,8 @@ class AlbumsHandler {
     await this._albumsService.editAlbumById(id, request.payload);
 
     return {
-      status: "success",
-      message: "Album berhasil diperbarui",
+      status: 'success',
+      message: 'Album berhasil diperbarui',
     };
   }
 
@@ -65,8 +65,8 @@ class AlbumsHandler {
     await this._albumsService.deleteAlbumById(id);
 
     return {
-      status: "success",
-      message: "Album berhasil dihapus",
+      status: 'success',
+      message: 'Album berhasil dihapus',
     };
   }
 
@@ -82,8 +82,8 @@ class AlbumsHandler {
     await this._albumsService.updateAlbumCoverUrl(albumId, coverUrl);
 
     const response = h.response({
-      status: "success",
-      message: "Sampul berhasil diunggah",
+      status: 'success',
+      message: 'Sampul berhasil diunggah',
     });
     response.code(201);
     return response;
@@ -96,8 +96,8 @@ class AlbumsHandler {
     await this._albumsService.likeAlbum(userId, albumId);
 
     const response = h.response({
-      status: "success",
-      message: "Berhasil menyukai album",
+      status: 'success',
+      message: 'Berhasil menyukai album',
     });
     response.code(201);
     return response;
@@ -110,8 +110,8 @@ class AlbumsHandler {
     await this._albumsService.unlikeAlbum(userId, albumId);
 
     const response = h.response({
-      status: "success",
-      message: "Berhasil batal menyukai album",
+      status: 'success',
+      message: 'Berhasil batal menyukai album',
     });
     response.code(200);
     return response;
@@ -125,12 +125,12 @@ class AlbumsHandler {
     );
 
     const response = h.response({
-      status: "success",
+      status: 'success',
       data: {
         likes: count,
       },
     });
-    response.header("X-Data-Source", dataSource);
+    response.header('X-Data-Source', dataSource);
     response.code(200);
     return response;
   }

@@ -1,4 +1,4 @@
-const autoBind = require("auto-bind");
+const autoBind = require('auto-bind');
 
 class ExportsHandler {
   constructor(exportsService, playlistService, validator) {
@@ -23,13 +23,13 @@ class ExportsHandler {
     };
 
     await this._exportsService.sendMessage(
-      "export:playlists",
+      'export:playlists',
       JSON.stringify(message),
     );
 
     const response = h.response({
-      status: "success",
-      message: "Permintaan Anda sedang kami proses",
+      status: 'success',
+      message: 'Permintaan Anda sedang kami proses',
     });
     response.code(201);
     return response;

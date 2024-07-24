@@ -1,4 +1,4 @@
-const autoBind = require("auto-bind");
+const autoBind = require('auto-bind');
 
 class PlaylistsHandler {
   constructor(service, validator) {
@@ -19,8 +19,8 @@ class PlaylistsHandler {
     });
 
     const response = h.response({
-      status: "success",
-      message: "Playlist berhasil ditambahkan",
+      status: 'success',
+      message: 'Playlist berhasil ditambahkan',
       data: {
         playlistId,
       },
@@ -33,7 +33,7 @@ class PlaylistsHandler {
     const { id: credentialId } = request.auth.credentials;
     const playlists = await this._service.getPlaylists(credentialId);
     return {
-      status: "success",
+      status: 'success',
       data: {
         playlists,
       },
@@ -48,8 +48,8 @@ class PlaylistsHandler {
     await this._service.deletePlaylistById(id);
 
     return {
-      status: "success",
-      message: "Playlist berhasil dihapus",
+      status: 'success',
+      message: 'Playlist berhasil dihapus',
     };
   }
 
@@ -67,8 +67,8 @@ class PlaylistsHandler {
     });
 
     const response = h.response({
-      status: "success",
-      message: "PlaylistSong berhasil ditambahkan",
+      status: 'success',
+      message: 'PlaylistSong berhasil ditambahkan',
       data: {
         playlistSongId,
       },
@@ -84,7 +84,7 @@ class PlaylistsHandler {
     await this._service.verifyPlaylistAccess(playlistId, credentialId);
     const playlist = await this._service.getPlaylistSongs(playlistId);
     return {
-      status: "success",
+      status: 'success',
       data: {
         playlist,
       },
@@ -105,8 +105,8 @@ class PlaylistsHandler {
     );
 
     return {
-      status: "success",
-      message: "PlaylistSong berhasil dihapus",
+      status: 'success',
+      message: 'PlaylistSong berhasil dihapus',
     };
   }
 
@@ -117,7 +117,7 @@ class PlaylistsHandler {
     await this._service.verifyPlaylistOwner(playlistId, credentialId);
     const activities = await this._service.getPlaylistActivities(playlistId);
     return {
-      status: "success",
+      status: 'success',
       data: {
         playlistId,
         activities,

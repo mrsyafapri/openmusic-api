@@ -1,5 +1,5 @@
-const amqp = require("amqplib");
-const config = require("../../utils/config");
+const amqp = require('amqplib');
+const config = require('../../utils/config');
 
 const ProducerService = {
   sendMessage: async (queue, message) => {

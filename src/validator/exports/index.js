@@ -1,5 +1,5 @@
-const ExportPlaylistsPayloadSchema = require("./schema");
-const InvariantError = require("../../exceptions/InvariantError");
+const ExportPlaylistsPayloadSchema = require('./schema');
+const InvariantError = require('../../exceptions/InvariantError');
 
 const ExportsValidator = {
   validateExportPlaylistsPayload: (payload) => {
