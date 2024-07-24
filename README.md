@@ -23,15 +23,34 @@
    ```
 
 3. **Install dependencies**:
+
    ```bash
    npm install
    ```
+
+4. **Create the database**:
+
+   Ensure PostgreSQL is running and create a new database for the application. You can do this using a PostgreSQL client like `psql`:
+
+   ```sql
+   CREATE DATABASE openmusicdb;
+   ```
+
+5. **Migrate the database**:
+
+   Run the migration scripts to set up the database schema:
+
+   ```bash
+   npm run migrate up
+   ```
+
+````
 
 ## Running the Application
 
 1. Start the application:
    ```bash
-   npm start
+   npm run start:dev
    ```
 2. Access the application:
 
@@ -64,3 +83,4 @@ RABBITMQ_SERVER=your_rabbitmq_server
 # Memcached
 MEMCACHED_SERVER=your_memcached_server
 ```
+````
